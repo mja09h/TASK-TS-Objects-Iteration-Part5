@@ -61,7 +61,13 @@ interface FruitByTaste {
 function fruitByTaste(fruits: Fruit[]): FruitByTaste {
   // Write your code here...
 
-  return {}; // replace empty object with what you see is fit
+  return fruits.reduce((acc, fruit) => {
+    if (!acc[fruit.taste]) {
+      acc[fruit.taste] = [];
+    }
+    acc[fruit.taste].push(fruit.name);
+    return acc;
+  }, {} as FruitByTaste); // replace empty object with what you see is fit
 }
 
 export { fruitByTaste, FruitByTaste };
